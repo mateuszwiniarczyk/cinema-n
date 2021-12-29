@@ -6,12 +6,11 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/strict",
-    "plugin:testing-library/recommended",
+    "plugin:testing-library/react",
     "plugin:jest-dom/recommended"
   ],
   "plugins": [
     "jsx-a11y",
-    "react-app",
     "react-hooks",
     "jest-dom",
     "testing-library",

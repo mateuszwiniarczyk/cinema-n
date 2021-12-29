@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "husky": "^7.0.4",
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "pre-commit": "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents"
   }
 }
