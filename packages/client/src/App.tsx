@@ -4,13 +4,17 @@ import { theme } from './lib/styles/theme';
 import './lib/i18n';
 import { AppRoutes } from './routes';
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorFallback } from 'components/ErrorFallback';
 
 const App = () => (
   <Suspense fallback={<h2>Loading</h2>}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AppRoutes />
-    </ThemeProvider>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <AppRoutes />
+      </ThemeProvider>
+    </ErrorBoundary>
   </Suspense>
 );
 
