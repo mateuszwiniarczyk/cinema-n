@@ -4,6 +4,7 @@ import { ROUTES } from './routes';
 import { lazy, memo } from 'react';
 
 const Home = lazy(() => import('pages/Home'));
+const SignUp = lazy(() => import('features/auth/pages/SignUp'));
 
 export const AppRoutes = memo(() => (
   <BrowserRouter>
@@ -17,7 +18,7 @@ export const AppRoutes = memo(() => (
         }
       />
       <Route path={ROUTES.SIGN_IN} element={<h1>Sign In</h1>} />
-      <Route path={ROUTES.SIGN_UP} element={<h1>Sign Up</h1>} />
+      <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
     </Routes>
   </BrowserRouter>
 ));
