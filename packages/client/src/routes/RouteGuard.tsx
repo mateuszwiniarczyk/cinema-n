@@ -1,11 +1,12 @@
+import { useAuth } from 'features/auth/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from './routes';
 
 const RouteGuard = ({ children }: { children: JSX.Element }) => {
-  const auth = false;
+  const { user } = useAuth();
 
-  if (!auth) {
-    return <Navigate to={ROUTES.SIGN_IN} replace />;
+  if (!user) {
+    return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
   return children;

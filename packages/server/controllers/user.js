@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 const secret = getEnv('SECRET');
 const expiresIn = '1h';
 
-export const signIn = async (req, res) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -28,13 +28,13 @@ export const signIn = async (req, res) => {
       expiresIn,
     });
 
-    return res.status(200).json({ result: existingUser, token });
+    return res.status(200).json({ user: { email: existingUser.email }, token });
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong.' });
   }
 };
 
-export const signUp = async (req, res) => {
+export const register = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
 
   try {
@@ -62,7 +62,7 @@ export const signUp = async (req, res) => {
       expiresIn,
     });
 
-    return res.status(200).send({ email, hashedPassowrd, token });
+    return res.status(200).send({ user: { email }, token });
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong.' });
   }
